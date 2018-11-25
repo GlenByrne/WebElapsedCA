@@ -11,6 +11,9 @@ class Page extends Component {
     render() {
         return (
             <div>
+                <body>
+
+                
                 {/* Content to output*/}
                 <Meta />
                 <Header />
@@ -18,7 +21,17 @@ class Page extends Component {
                 {/* Render props passed to this Component */}
                 {this.props.children}
                 <Footer />
+
+                <style jsx> {`
+            body {
+                background-color: #303030;
+                margin: 0em;
+            }
+            `}</style>
+                </body>
+                
             </div>
+            
         );
     }
 }

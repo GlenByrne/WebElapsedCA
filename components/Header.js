@@ -6,8 +6,9 @@ const Header = () => (
 
             h2.title {
                 font-family: "Arial";
-                color: #535151;
+                color: #ffffff;
                 padding: 5px;
+                text-align: center;
             }
 
 
