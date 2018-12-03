@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08440d7c-9c08-4ce0-9625-f1dd3158963e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SearchForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/news.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/news.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/story.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,11 +29,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/news.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="217" column="68" lean-forward="true" selection-start-line="217" selection-start-column="68" selection-end-line="217" selection-end-column="68" />
+            <state relative-caret-position="4623">
+              <caret line="204" column="68" selection-start-line="204" selection-start-column="68" selection-end-line="204" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/article.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#81#120#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,19 +55,10 @@
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/story.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1027">
-              <caret line="158" column="21" lean-forward="true" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -72,6 +74,7 @@
         <option value="$PROJECT_DIR$/pages/sport.js" />
         <option value="$PROJECT_DIR$/pages/story.js" />
         <option value="$PROJECT_DIR$/pages/news.js" />
+        <option value="$PROJECT_DIR$/pages/article.js" />
       </list>
     </option>
   </component>
@@ -135,11 +138,13 @@
       <updated>1543076762702</updated>
       <workItem from="1543076766558" duration="791000" />
       <workItem from="1543094921381" duration="2007000" />
+      <workItem from="1543611395260" duration="217000" />
+      <workItem from="1543611633028" duration="23000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2798000" />
+    <option name="totallyTimeSpent" value="3038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -175,6 +180,7 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/story.js" />
     <entry file="file://$PROJECT_DIR$/pages/sport.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1978">
@@ -182,27 +188,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/story.js">
+    <entry file="file://$PROJECT_DIR$/pages/news.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1027">
-          <caret line="158" column="21" lean-forward="true" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="21" />
+        <state relative-caret-position="4623">
+          <caret line="204" column="68" selection-start-line="204" selection-start-column="68" selection-end-line="204" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/news.js">
+    <entry file="file://$PROJECT_DIR$/pages/article.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="217" column="68" lean-forward="true" selection-start-line="217" selection-start-column="68" selection-end-line="217" selection-end-column="68" />
+        <state relative-caret-position="23">
+          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#81#120#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

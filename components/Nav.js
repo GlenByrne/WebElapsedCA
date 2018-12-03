@@ -10,9 +10,9 @@ const Nav = () => (
            <ul>
             <li><Link href="/index"><a>Home</a></Link></li>
             <li><Link href="/news"><a>News</a></Link></li>
-            <li><Link href="/business"><a>Business</a></Link></li>
-            <li><Link href="/sport"><a>Sport</a></Link></li>
-            <li><Link href="/technology"><a>Technology</a></Link></li>
+            <li><Link href="#"><a>Business</a></Link></li>
+            <li><Link href="#"><a>Sport</a></Link></li>
+            <li><Link href="#"><a>Technology</a></Link></li>
            </ul>
        </nav>
        {/* Define css for this page or component */}

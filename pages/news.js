@@ -2,8 +2,8 @@
 import Link from 'next/link';
 // Import fetch library
 import fetch from 'isomorphic-unfetch';
-import AsyncSelect from 'react-select/lib/Async';
 import SearchForm from '../components/SearchForm';
+import SearchFormSelect from '../components/SearchFormSelect';
 import React from "react";
 
 const newsSource = 'the-irish-times';
@@ -13,19 +13,7 @@ const apiKey = 'ca9dc2643a3742259e6d954bcd3d9bfd';
 
 // Search Options for dropdown
 
-const options = [{
-    value: 'engadget',
-    label: 'Engadget'
-},
-    {
-        value: 'rte',
-        label: 'RTE'
-    },
-    {
-        value: 'reddit-r-all',
-        label: 'Reddit'
-    }
-];
+
 
 const filterNews = (inputValue) => {
     if (inputValue) {
@@ -34,12 +22,6 @@ const filterNews = (inputValue) => {
         );
     }
     return options;
-};
-
-const loadOptions = (inputValue, callback) => {
-    setTimeout(() => {
-        callback(filterNews(inputValue));
-    }, 1000);
 };
 
 function formatDate(input) {
@@ -133,7 +115,7 @@ export default class News extends React.Component {
     setNewsSource = (input) => {
         this.setState({
             newsSource: input,
-            url: `https://newsapi.org/v2/top-headlines?sources=${input}&apiKeys=${apiKey}`
+            url: `https://newsapi.org/v2/top-headlines?sources=${input}&apiKey=${apiKey}`
         })
     };
 
@@ -168,28 +150,27 @@ export default class News extends React.Component {
 
                 <div className="select">
 
+                <SearchForm setNewsSource={this.setNewsSource}/>
+                <SearchFormSelect setNewsSource={this.setNewsSource}/>
+
                     { /* Add the SearchForm component */} { /* Pass the setNewsSource function as a prop with the same name */}
-                    <AsyncSelect
-                        cacheOptions
-                        loadOptions={loadOptions}
-                        defaultOptions
-                        onInputChange={this.setNewsSource}
-                    />
+                    
                 </div>
                 { /* Example search links - note using name attribute for parameters(!!) */}
                 <ul className="newsMenu">
-                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie">Top Headlines
-                        Ireland</a></li>
-                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=business">Business
-                        News Ireland</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie">Top Headlines Ireland</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=business">Business News Ireland</a></li>
                     <li><a href="#" onClick={this.searchNewsAPI} name="everything?q=technology">Technology News</a></li>
-                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=weather">Weather
-                        in Ireland</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="everything?language=en&q=weather">Weather News</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=entertainment">Entertainment News</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=sports">Sports News</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=science">Science News</a></li>
+                    <li><a href="#" onClick={this.searchNewsAPI} name="top-headlines?country=ie&category=health">Health News</a></li>
                 </ul>
 
                 { /* Display a title based on source */}
 
-                <h3>{this.state.newsSource.split("-").join(" ")}</h3>
+                {/* <h3>{this.state.newsSource.split("-").join(" ")}</h3> */}
 
                 <div>
 
@@ -200,7 +181,7 @@ export default class News extends React.Component {
                     { /* for each story. Also a link for more.. */}
 
                     {this.state.articles.map((article, index) => (
-                        <Link as={`/p/${index}`} href={`/story?title={article.title}`}>
+                        <Link as={`/article/${index}`} href={`/article?id=${index}`}>
                             <section key={index}>
 
                                 <div className="container">
@@ -213,15 +194,6 @@ export default class News extends React.Component {
 
                                         <p className="author"> {article.author} {formatDate(article.publishedAt)}</p>
                                     </div>
-
-
-                                    {/* <p>{article.description}</p>
-
-          <p>{article.content}</p>
-
-          <p><Link href = "/story"><a>Read More</a></Link ></p>
-
-          <p onClick = {this.test}>click..</p> */}
                                     <div className="overlay">
                                     </div>
                                 </div>
@@ -362,91 +334,55 @@ export default class News extends React.Component {
     static async getInitialProps(response) {
 
         // Build the url which will be used to get the data
-
         // See https://newsapi.org/s/the-irish-times-api
-
-        const initUrl = `https://newsapi.org/v2/top-headlines?sources=${newsSource}&apiKey=${apiKey}`;
-
+        const defaultUrl = `https://newsapi.org/v2/top-headlines?sources=${newsSource}&apiKey=${apiKey}`;
+    
         // Get news data from the api url
-
-        const data = await getNews(initUrl);
-
+        const data = await getNews(defaultUrl);
+    
         // If the result contains and articles array then it is good so return articles
-
         if (Array.isArray(data.articles)) {
-
-            return {
-
-                articles: data.articles
-
-            }
-
+          return {
+            articles: data.articles
+          }
         }
-
         // Otherwise it contains an error, log and redirect to error page (status code 400)
         else {
-
-            console.error(data);
-
-            if (response) {
-
-                response.statusCode = 400;
-
-                response.end(data.message);
-
-            }
-
+          console.error(data)
+          if (response) {
+            response.statusCode = 400
+            response.end(data.message);
+          }
         }
-
-    } // End getInitialProps
-
-    // componentDidUpdate is called when the page state or props re updated
-
-    // It can be over-ridden to perform other functions when an update occurs
-
-    // Here it fetches new data using this.state.newsSource as the source
-
-    async componentDidUpdate(prevProps, prevState) {
-
-        // Check if newsSource url has changed to avoid unnecessary updates
-
+      }
+    
+      // componentDidUpdate is called when the page state or props re updated
+      // It can be over-ridden to perform other functions when an update occurs
+      // Here it fetches new data using this.state.newsSource as the source
+      async componentDidUpdate(prevProps, prevState) {
+    
+        // Check if newsSource url has changed to avoid unecessary updates 
         if (this.state.url !== prevState.url) {
-
-            // Use api url (from state) to fetch data and call getNews()
-
-            const data = await getNews(this.state.url);
-
-            // If the result contains and articles array then it is good so update articles
-
-            if (Array.isArray(data.articles)) {
-
-                // Store articles in state
-
-                this.state.articles = data.articles;
-
-                // Force page update by changing state (make sure it happens!)
-
-                this.setState(this.state);
-
+    
+          // Use api url (from state) to fetch data and call getNews()
+          const data = await getNews(this.state.url);
+    
+          // If the result contains and articles array then it is good so update articles
+          if (Array.isArray(data.articles)) {
+            // Store articles in state
+            this.state.articles = data.articles;
+            // Force page update by changing state (make sure it happens!)
+            this.setState(this.state);
+          }
+          // Otherwise it contains an error, log and redirect to error page (status code 400)
+          else {
+            console.error(data)
+            if (response) {
+              response.statusCode = 400
+              response.end(data.message);
             }
-
-            // Otherwise it contains an error, log and redirect to error page (status code 400)
-            else {
-
-                console.error(data);
-
-                if (response) {
-
-                    response.statusCode = 400;
-
-                    response.end(data.message);
-
-                }
-
-            }
-
+          }
         }
-
-    } // End componentDidUpdate
+      } // End componentDidUpdate
 
 }

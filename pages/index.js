@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch';
 // Pass this content as 'props' to child components
 const Index = props => (
   <div>
-  <h1>Batman TV Shows</h1>
+  <h1 className="title">Batman TV Shows</h1>
   <ul>
     {props.shows.map(({show}) => (
       <li key={show.id}>
@@ -15,6 +15,26 @@ const Index = props => (
       </li>
     ))}
   </ul>
+  <style jsx> {`
+  
+  /* CSS for this page */
+    .title {
+        color: #ffffff;
+        padding-left: 1em;
+    }
+
+    li a {
+
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      color: rgb(255, 187, 0);
+      text-decoration: underline;
+    }
+  
+  `}</style>
   </div>
 );
 

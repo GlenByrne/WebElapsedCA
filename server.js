@@ -3,6 +3,7 @@
 
 const express = require('express')
 const next = require('next')
+const cors = require('cors')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -12,8 +13,8 @@ app.prepare()
 .then(() => {
   const server = express()
 
-  server.get('/p/:id', (req, res) => {
-    const actualPage = '/story'
+  server.get('/article/:id', (req, res) => {
+    const actualPage = '/article'
     const queryParams = { title: req.params.id } 
     app.render(req, res, actualPage, queryParams)
   })
