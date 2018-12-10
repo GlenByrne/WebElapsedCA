@@ -3,6 +3,7 @@ const Footer = () => (
     <div>
         <footer>
             <p>contact information: info@newssite.com</p>
+            <p>Powered by News API</p>
         </footer>
         <style jsx>{`
             footer {
