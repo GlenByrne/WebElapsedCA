@@ -13,6 +13,10 @@ const Footer = () => (
                 color: #ffffff;
                 clear: both;
             }
+
+            footer a{
+                color: #ffffff;
+            }
         `}</style>
     </div> 
  )
