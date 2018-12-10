@@ -3,7 +3,7 @@ const Footer = () => (
     <div>
         <footer>
             <p>contact information: info@newssite.com</p>
-            <p href="https://newsapi.org">Powered by News API</p>
+            <a href="https://newsapi.org">Powered by News API</a>
         </footer>
         <style jsx>{`
             footer {
